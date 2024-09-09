@@ -1,10 +1,10 @@
-import appRoutes from "./routes/routerUsers.js"
+import usersRoutes from "./routes/routerUsers.js"
 import express from "express"
 
 
 const app = express()
 
-app.use("/users", appRoutes)
+app.use("/users", usersRoutes)
 
 
 
