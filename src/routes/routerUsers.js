@@ -1,8 +1,15 @@
-import {Router} from "express"
-const appRoutes = Router()
+import { Router } from "express"
 
-appRoutes.get("/", (request, response) => {
-    response.send("Hello, world!")
+
+
+const appUserRouters = Router()
+
+appUserRouters.post("/", (request, response) => {
+    const { filme, genero, duracao, indicacao } = request.body
+
+    response.json({filme, genero, duracao, indicacao})
 })
 
-export default appRoutes
+
+
+export default appUserRouters
