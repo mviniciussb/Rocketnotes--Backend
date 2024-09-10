@@ -1,14 +1,26 @@
 import { Router } from "express"
+import UsersController from "../controllers/UsersController.js"
 
 
 
 const appUserRouters = Router()
 
-appUserRouters.post("/", (request, response) => {
-    const { filme, genero, duracao, indicacao } = request.body
 
-    response.json({filme, genero, duracao, indicacao})
-})
+
+function myMiddleware(request, response, next){
+    console.log("Você passou pelo middleware");
+
+    if(request.body.indicacao != "livre"){
+        return response.json({message: "Verificar classificação indicativa no cartaz."})
+    }
+
+    next()
+}
+
+
+const userController = new UsersController()
+
+appUserRouters.post("/", myMiddleware, userController.create)
 
 
 
