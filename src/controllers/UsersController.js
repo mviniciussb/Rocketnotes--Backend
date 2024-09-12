@@ -13,7 +13,7 @@ class UsersController{
         const { filme, genero, duracao, indicacao } = request.body
 
         if(!filme){
-            throw new AppError("O nome é obrigatório")
+            throw new AppError("O nome do filme é obrigatório")
         }
 
         response.json({filme, genero, duracao, indicacao})
