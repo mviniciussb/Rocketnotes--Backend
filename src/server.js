@@ -1,4 +1,4 @@
-import expressAsyncErrors from "express-async-errors"
+import "express-async-errors"
 import express, { request, response } from "express"
 import routes from "./routes/index.js"
 import AppError from "./utills/appError.js"
