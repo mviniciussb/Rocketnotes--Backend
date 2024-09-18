@@ -2,15 +2,15 @@ import "express-async-errors"
 import express, { request, response } from "express"
 import routes from "./routes/index.js"
 import AppError from "./utills/appError.js"
-import database from "./database/sqlite/index.js"
+import migrationsRun from "./database/sqlite/migrations/index.js"
 
 
 const app = express()
 app.use(express.json())
 
+migrationsRun()
 app.use(routes)
 
-database()
 
 app.use((error, request, response, next) => {
     if(error instanceof AppError){
