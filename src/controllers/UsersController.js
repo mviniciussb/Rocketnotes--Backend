@@ -1,5 +1,7 @@
 import AppError from "../utills/appError.js"
 import sqliteConnection from "../database/sqlite/index.js"
+import bcryptjs from "bcryptjs"
+const { hash } = bcryptjs
 
 class UsersController {
 
@@ -13,11 +15,17 @@ class UsersController {
             throw new AppError("Esse e-mail já está em uso.")
         }
 
+        const hashedPassword = await hash(password, 8)
+
         await database.run(
-            "INSERT INTO users (name, email, password) VALUES (?, ?, ?)", 
-            [name, email, password])
+            "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
+            [name, email, hashedPassword])
 
         return response.status(201).json()
+    }
+
+    async update(request, response){
+        
     }
 }
 
