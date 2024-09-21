@@ -9,6 +9,8 @@ const userController = new UsersController()
 
 
 appUserRouters.post("/", userController.create)
+appUserRouters.put("/:id", userController.update)
+
 
 
 
