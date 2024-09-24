@@ -8,4 +8,6 @@ export const up = knex => knex.schema.createTable("notes", table => {
     table.timestamp("updated_at").default(knex.fn.now());
 });
 
-export const down = knex => knex.schema.dropTable("notes");
+export const down = knex => knex.schema.dropTable("notes", table => {
+    
+});
