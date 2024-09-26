@@ -7,9 +7,11 @@ const appNotesRouters = Router()
 
 const notesController = new NotesController()
 
-
+appNotesRouters.get("/", notesController.index)
 appNotesRouters.post("/:user_id", notesController.create)
 appNotesRouters.get("/:id", notesController.show)
+appNotesRouters.delete("/:id", notesController.delete)
+
 
 
 

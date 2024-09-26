@@ -7,7 +7,7 @@ class NotesController {
         const { title, description, tags, links } = request.body
         const { user_id } = request.params
 
-        const [ notes_id] = await knex("notes").insert({
+        const [notes_id] = await knex("notes").insert({
             title,
             description,
             user_id
@@ -37,12 +37,12 @@ class NotesController {
 
     }
 
-    async show(request, response){
-        const {id} = request.params
+    async show(request, response) {
+        const { id } = request.params
 
-        const note = await knex("notes").where({id}).first()
-        const tags = await knex("tags").where({notes_id: note.id}).orderBy("name")
-        const links = await knex("links").where({notes_id: note.id}).orderBy("created_at")
+        const note = await knex("notes").where({ id }).first()
+        const tags = await knex("tags").where({ notes_id: note.id }).orderBy("name")
+        const links = await knex("links").where({ notes_id: note.id }).orderBy("created_at")
 
 
 
@@ -51,6 +51,34 @@ class NotesController {
             tags,
             links
         })
+    }
+
+    async delete(request, response) {
+        const { id } = request.params
+
+        await knex("notes").where({ id }).delete()
+
+        return response.json()
+    }
+
+    async index(request, response) {
+        const { user_id, title, tags } = request.query
+        let notes
+
+        if (tags) {
+            const filterTags = tags.split(",").map(tag => tag.trim())
+
+            notes = await knex("tags")
+                .whereIn("name", filterTags)
+        } else {
+
+            notes = await knex("notes")
+                .where({ user_id })
+                .whereLike("title", `%${title}%`)
+                .orderBy("title")
+        }
+
+        return response.json(notes)
     }
 }
 
