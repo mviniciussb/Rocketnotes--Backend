@@ -1,56 +1,64 @@
+# Movie Notes API
+Movie Notes API é uma API criada para armazenar e gerenciar notas sobre filmes. O projeto foi desenvolvido utilizando Node.js no back-end, com Knex como query builder e SQLite3 como banco de dados. A API permite realizar operações de CRUD (Create, Read, Update, Delete) para gerenciar notas de filmes, sem a necessidade de um front-end por enquanto.
 
-# Rocketnotes - Backend
+## Funcionalidades
+- **CRUD** de Notas: Permite criar, listar, atualizar e deletar notas de filmes.
+- **Banco de Dados SQLite3**: Utiliza o banco de dados SQLite3 para armazenar informações sobre as notas de filmes.
+- **Hash** de Senhas: A API implementa segurança para os usuários cadastrados utilizando a biblioteca bcryptjs para hash de senhas.
+- **Migrations** com Knex: Usa o Knex para criar e gerenciar as tabelas no banco de dados por meio de migrations.
+- 
+## Tecnologias Utilizadas
+- **Node.js**: Ambiente de execução para JavaScript no lado do servidor.
+- **Express**: Framework web para construção de APIs.
+- **Knex**: Query builder utilizado para interagir com o banco de dados SQLite3.
+- **SQLite3**: Banco de dados utilizado no projeto.
+- **Bcryptjs**: Biblioteca para hash de senhas.
+- **Nodemon**: Ferramenta para reiniciar automaticamente o servidor durante o desenvolvimento.
+  
+## Requisitos
+- Node.js instalado (versão 14+)
+- npm instalado
 
-Este projeto consiste no backend de uma aplicação de notas chamada Rocketnotes. Desenvolvi uma API RESTful que conecta a um banco de dados SQL para realizar operações CRUD completas. A API foi implementada com Node.js e utiliza o Knex para realizar as migrations e interagir com o banco de dados SQLite.
+## Instalação
 
-### Funcionalidades
-
-- **Autenticação segura**: As senhas são criptografadas com bcrypt para garantir a segurança dos dados dos usuários.
-
-- **Operações CRUD**: A API permite a criação, leitura, atualização e exclusão de notas e usuários.
-
-- **Gestão de erros**: Implementação de lógica de tratamento de erros para fornecer feedback detalhado sobre o status das requisições.
-
-### Tecnologias Utilizadas
-
-- **Node.js**: Ambiente de execução do JavaScript para construir a API.
-
-- **Express.js**: Framework utilizado para simplificar a criação de rotas e o gerenciamento de middlewares.
-
-- **Knex**: Utilizado para criação e gerenciamento de migrations, permitindo manipulação do banco de dados com SQLite.
-
-- **SQLite**: Banco de dados utilizado para armazenamento das informações.
-
-- **Bcrypt**: Biblioteca para hashing de senhas, garantindo a segurança dos dados sensíveis.
-
-## Como Executar o Projeto
-
-
-1. Clone este repositório:
-
+1. Clone o repositório:
 ```bash
-  git clone https://github.com/mviniciussb/Rocketnotes--Backend.git
+git clone https://github.com/mviniciussb/MovieNotes--Backend.git
 ```
 
-2. Instale as dependências:
+2. Acesse a pasta do projeto:
+```bash
+cd movie-notes-api
+```
 
-
+3. Instale as dependências:
 ```bash
 npm install
 ```
 
-3. Configure o banco de dados e execute as migrations:
-
+4. Execute as migrations para configurar o banco de dados:
 ```bash
-npm migrate
+npm run migrate
+ ```
+
+## Uso
+1. Para iniciar o servidor em modo de desenvolvimento (com nodemon):
+```bash
+npm run dev
 ```
 
-4. Inicie o servidor:
-
+2. Para iniciar o servidor em modo de produção:
 ```bash
-npm start / npm run dev
+npm start
 ```
 
-### Contribuição
+A API estará rodando em http://localhost:5555
 
-Sinta-se à vontade para sugerir melhorias ou abrir PRs com contribuições.
+## Estrutura do Projeto
+```bash
+src/
+├── controllers/   # Controladores das rotas da API
+├── database/      # Configurações do banco de dados e migrations
+├── routes/        # Definições das rotas da API
+└── server.js      # Arquivo principal que inicia o servidor
+```
