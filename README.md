@@ -23,12 +23,12 @@ Movie Notes API é uma API criada para armazenar e gerenciar notas sobre filmes.
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/mviniciussb/MovieNotes--Backend.git
+git clone https://github.com/mviniciussb/Rocketnotes--Backend.git
 ```
 
 2. Acesse a pasta do projeto:
 ```bash
-cd movie-notes-api
+cd Rocketnotes--Backend
 ```
 
 3. Instale as dependências:
@@ -52,7 +52,7 @@ npm run dev
 npm start
 ```
 
-A API estará rodando em http://localhost:5555
+A API estará rodando em http://localhost:3000
 
 ## Estrutura do Projeto
 ```bash
